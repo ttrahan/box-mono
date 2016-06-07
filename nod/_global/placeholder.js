@@ -1,3 +1,3 @@
 'use strict';
 
-var placeholder = false;
+var placeholder = true;

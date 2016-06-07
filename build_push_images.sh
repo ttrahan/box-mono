@@ -14,7 +14,7 @@ detect_changed_languages() {
 }
 
 detect_changed_folders() {
-  folders=`git diff $SHIPPABLE_COMMIT_RANGE | LANG=C sort -u | grep $1 | awk 'BEGIN {FS="/"} {print $2}' | uniq`
+  folders=`git diff $SHIPPABLE_COMMIT_RANGE | LANG=C sort -ur | grep $1 | awk 'BEGIN {FS="/"} {print $2}' | uniq`
 
   echo $folders
 
