@@ -3,6 +3,7 @@ export IMAGE_NAME=ttrahan/box-mono
 
 detect_changed_languages() {
   echo "detecting changes for this build"
+  LC_COLLATE=C
   languages=`git diff --name-only $SHIPPABLE_COMMIT_RANGE | sort -u | awk 'BEGIN {FS="/"} {print $1}' | uniq`
 
   for language in $languages
@@ -14,7 +15,9 @@ detect_changed_languages() {
 }
 
 detect_changed_folders() {
-  folders=`git diff --name-only $SHIPPABLE_COMMIT_RANGE | sort -u | grep $1 | awk 'BEGIN {FS="/"} {print $2}' | uniq`
+  folders=`git diff $SHIPPABLE_COMMIT_RANGE | sort -u | grep $1 | awk 'BEGIN {FS="/"} {print $2}' | uniq`
+
+  echo $folders
 
   process_all_components=false
   for folder in $folders
