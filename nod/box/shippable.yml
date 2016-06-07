@@ -1,0 +1,33 @@
+language: none
+
+build:
+  ci:
+    - echo 'CI Running'
+    - export IMAGE_NAME=ship-dtr.in/sdemo/box
+#    - export IMAGE_NAME=shippabledocker/box-ddc
+    - ./build.sh
+
+  post_ci:
+    - ./push.sh
+
+integrations:
+  hub:
+    - integrationName: "ship-ddc-dtr"
+      type: "Docker Trusted Registry"
+      branches:
+        only:
+          - master
+    - integrationName: "ship-docker-hub"
+      type: "docker"
+      branches:
+        only:
+          - master
+          
+notifications:
+  - integrationName: slack
+    type: slack
+    recipients:
+      - "#demo"
+    on_start : never
+    on_success: always
+    on_failure: always

@@ -1,0 +1,24 @@
+language: none
+
+build:
+  ci:
+    - echo 'CI Running'
+    - export IMAGE_NAME=ship-dtr.in/sdemo/dv
+#    - export IMAGE_NAME=shippabledocker/dv-ddc
+    - ./build.sh
+
+  post_ci:
+    - ./push.sh
+
+integrations:
+  hub:
+    - integrationName: "ship-ddc-dtr"
+      type: "Docker Trusted Registry"
+      branches:
+        only:
+          - master
+    - integrationName: "ship-docker-hub"
+      type: "docker"
+      branches:
+        only:
+          - master

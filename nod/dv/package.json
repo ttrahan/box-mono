@@ -1,0 +1,40 @@
+{
+  "name": "dv",
+  "version": "0.0.1",
+  "description": "shows visually status of deployments using a central db",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aye0aye/dv.git"
+  },
+  "keywords": [
+    "angularjs"
+  ],
+  "author": "harryi3t (https://github.com/harryi3t)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aye0aye/dv/issues"
+  },
+  "homepage": "https://github.com/aye0aye/dv#readme",
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.10",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-express-server": "^0.5.1",
+    "grunt-simple-mocha": "^0.4.0",
+    "chai": "^3.0.0",
+    "istanbul": "^0.3.14",
+    "mocha": "^2.2.5",
+    "should": "^6.0.3",
+    "superagent": "^1.2.0",
+    "xunit-file": "0.0.6"
+  }
+}

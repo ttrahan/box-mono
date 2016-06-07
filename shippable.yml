@@ -1,0 +1,32 @@
+# Language setting
+language: node_js
+
+# Version number
+node_js:
+  - 4.3
+
+build:
+  pre_ci:
+    - node --version
+    - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/testresults
+    - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/codecoverage
+
+  pre_ci_boot:
+    image_name: drydock/u14nod
+    image_tag: prod
+    pull: true
+    options: '--privileged=true'
+
+  ci:
+    - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/testresults
+    - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/codecoverage
+    - ./install.sh
+    - ./build_push_images.sh
+
+integrations:
+  hub:
+    - integrationName: "shippabledocker"
+      type: docker
+      branches:
+        only:
+          - master
